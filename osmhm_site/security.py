@@ -23,8 +23,12 @@ class RootFactory(object):
         (Allow, 'group:member', 'edit_user_or_object'),
         (Allow, 'group:admin', 'watch_user_or_object'),
         (Allow, 'group:admin', 'edit_user_or_object'),
+        (Allow, 'group:admin', 'watch_all_user_or_object'),
+        (Allow, 'group:admin', 'edit_all_user_or_object'),
         (Allow, 'group:owner', 'watch_user_or_object'),
         (Allow, 'group:owner', 'edit_user_or_object'),
+        (Allow, 'group:owner', 'watch_all_user_or_object'),
+        (Allow, 'group:owner', 'edit_all_user_or_object'),
         (Allow, 'group:owner', 'super_admin'),
     ]
     def __init__(self, request):
