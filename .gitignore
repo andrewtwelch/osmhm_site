@@ -3,6 +3,7 @@
 *.py[cod]
 *.egg
 *.egg-info
+.venv
 bin
 build
 develop-eggs
