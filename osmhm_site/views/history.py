@@ -21,21 +21,23 @@ from ..models import (
     User,
 )
 
-@view_config(route_name='history', renderer='osmhm_site:templates/history.mako')
+
+@view_config(route_name="history", renderer="osmhm_site:templates/history.mako")
 def watch(request):
-	try:
-		history = DBSession.query(History).order_by(desc(History.changeset)).all()
-		filetime = DBSession.query(File_List).first()
-	except DBAPIError:
-		print 'Sorry'
-	if not history:
-		history = None
-	return dict(page_id='history', history=history, update_time=filetime.timestamp)
+    try:
+        history = DBSession.query(History).order_by(desc(History.changeset)).all()
+        filetime = DBSession.query(File_List).first()
+    except DBAPIError:
+        print("Sorry")
+    if not history:
+        history = None
+    return dict(page_id="history", history=history, update_time=filetime.timestamp)
 
-@view_config(route_name='history_clear', permission='edit_user_or_object')
+
+@view_config(route_name="history_clear", permission="edit_user_or_object")
 def watch_list(request):
-	thedata = DBSession.query(History).delete()
+    thedata = DBSession.query(History).delete()
 
-	DBSession.flush()
+    DBSession.flush()
 
-	return HTTPFound(location=route_path('admin',request))
+    return HTTPFound(location=route_path("admin", request))
